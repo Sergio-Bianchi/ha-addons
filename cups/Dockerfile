@@ -2,10 +2,18 @@ ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:3.18
 FROM ${BUILD_FROM}
 
 # Install CUPS only
-RUN apk add --no-cache cups
+RUN apk add --no-cache cups && \
+    mkdir -p /var/run/cups/certs && \
+    mkdir -p /var/log/cups && \
+    mkdir -p /etc/cups && \
+    chmod 0755 /var/run/cups/certs
 
 # Copy root filesystem
 COPY rootfs /
+
+# Set debug mode for CUPS
+ENV CUPS_DEBUG_LOG=cups-debug.log
+ENV CUPS_DEBUG_LEVEL=debug
 
 EXPOSE 631
 
