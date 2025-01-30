@@ -1,2 +1,3 @@
 #!/usr/bin/with-contenv bashio
-cupsd -f
+chmod 0755 /var/run/cups/certs
+cupsd -f -c /etc/cups/cupsd.conf
