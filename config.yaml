@@ -1,0 +1,21 @@
+name: "CUPS Print Server"
+version: "1.0.0"
+slug: "cups"
+description: "CUPS Print Server for Home Assistant"
+url: "https://github.com/Sergio-Bianchi/ha-addons/tree/main/cups"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: services
+boot: auto
+ports:
+  631/tcp: 631
+privileged:
+  - NET_ADMIN
+devices:
+  - /dev/bus/usb
+map:
+  - config:rw
