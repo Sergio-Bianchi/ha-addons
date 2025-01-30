@@ -1,12 +1,8 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:3.18
 FROM ${BUILD_FROM}
 
-# Install CUPS and required packages
-RUN apk add --no-cache \
-    cups \
-    cups-filters \
-    cups-pdf \
-    cups-client
+# Install CUPS only
+RUN apk add --no-cache cups
 
 # Copy root filesystem
 COPY rootfs /
