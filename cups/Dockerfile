@@ -2,7 +2,9 @@ ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:3.18
 FROM ${BUILD_FROM}
 
 # Install CUPS and required packages
-RUN apk add --no-cache \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.18/community" >> /etc/apk/repositories && \
+    apk update && \
+    apk add --no-cache \
     cups \
     cups-filters \
     cups-pdf \
