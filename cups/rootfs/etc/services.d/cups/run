@@ -1,3 +1,6 @@
 #!/usr/bin/with-contenv bashio
+mkdir -p /var/run/cups/certs
+mkdir -p /var/log/cups
 chmod 0755 /var/run/cups/certs
-cupsd -f -c /etc/cups/cupsd.conf
+echo "Starting CUPS daemon..."
+cupsd -f -c /etc/cups/cupsd.conf -l /var/log/cups/cups.log
